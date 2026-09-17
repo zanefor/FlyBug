@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .build/
+
+# Local code-signing identity; supply it through FLYBUG_SIGN_IDENTITY instead.
+signing-identity.txt

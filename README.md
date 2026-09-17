@@ -84,6 +84,24 @@ node extension/test_extension.js
 codesign --verify --deep --strict FlyBug.app
 ```
 
+`build.sh` 需要一个稳定的代码签名身份：重建后身份不变，系统隐私授权才会延续；用 ad-hoc 签名会让应用每次都被当成新程序。签名身份不随仓库分发，用下面任一方式提供。
+
+直接通过环境变量传入：
+
+```sh
+export FLYBUG_SIGN_IDENTITY="$(security find-identity -v -p codesigning | awk -F'"' '/Apple Development/ { print $2; exit }')"
+./build.sh
+```
+
+或者在本目录创建 `signing-identity.txt`，文件内只放 40 位 SHA-1（已被 `.gitignore` 忽略）：
+
+```sh
+security find-identity -v -p codesigning | awk -F'"' '/Apple Development/ { print $2; exit }' > signing-identity.txt
+./build.sh
+```
+
+两者都缺失或身份在这台 Mac 上不可用时，脚本会直接退出，不会退化为 ad-hoc 签名，也不会覆盖已有的 `FlyBug.app`。
+
 外部输入观察脚本只读取 FlyBug 的状态，不代替用户输入：
 
 ```sh

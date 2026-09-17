@@ -4,13 +4,20 @@ FLYBUG_ROOT="$(cd "$(dirname "$0")" && pwd)"
 FLYBUG_APP="$FLYBUG_ROOT/FlyBug.app"
 FLYBUG_ARCH="$(uname -m)"
 FLYBUG_CACHE="${TMPDIR:-/tmp}/flybug-swift-module-cache"
-FLYBUG_SIGN_IDENTITY="${FLYBUG_SIGN_IDENTITY:-$(cat "$FLYBUG_ROOT/signing-identity.txt")}"
+# The signing identity stays out of version control. Read it from the
+# environment first, then fall back to a local (git-ignored) file so the two
+# ways of supplying it behave identically.
+FLYBUG_SIGN_IDENTITY="${FLYBUG_SIGN_IDENTITY:-}"
+if [[ -z "$FLYBUG_SIGN_IDENTITY" && -f "$FLYBUG_ROOT/signing-identity.txt" ]]; then
+  FLYBUG_SIGN_IDENTITY="$(cat "$FLYBUG_ROOT/signing-identity.txt")"
+fi
 
 # A stable signing identity preserves the application's identity across local
 # rebuilds. Ad-hoc signing identifies a single binary and can lose TCC grants.
 if [[ ! "$FLYBUG_SIGN_IDENTITY" =~ ^[[:xdigit:]]{40}$ ]]; then
   echo "FlyBug requires a valid 40-character code-signing identity SHA-1 hash." >&2
-  echo "Set FLYBUG_SIGN_IDENTITY using an identity listed by: security find-identity -v -p codesigning" >&2
+  echo "Export FLYBUG_SIGN_IDENTITY, or create signing-identity.txt in this directory." >&2
+  echo "List available identities with: security find-identity -v -p codesigning" >&2
   exit 1
 fi
 FLYBUG_SIGN_IDENTITY="$(printf '%s' "$FLYBUG_SIGN_IDENTITY" | tr '[:lower:]' '[:upper:]')"
