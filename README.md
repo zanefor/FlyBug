@@ -103,3 +103,9 @@ python3 tests/observe_external.py --expect found --app "Google Chrome" --timeout
 - `docs/screenshots/`：README 中使用的效果预览截图。
 
 项目不包含云端服务或后台守护进程。删除交付文件夹即可移除应用；若曾安装接入，再删除相应的本地 skill、Claude hook 和 `~/.local/share/FlyBug`。
+
+## 许可证
+
+本项目采用 [MIT 许可证](LICENSE) 开源。你可以自由使用、修改、分发，包括商用，只需保留版权声明与许可声明。软件按“原样”提供，不附带任何担保。
+
+`extension/` 中的 VS Code 系列扩展同样采用 MIT 许可证（见 `extension/LICENSE`）。
