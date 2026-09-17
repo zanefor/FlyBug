@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PostToolUseFailure": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"/ABSOLUTE/PATH/FlyBug/integrations/claude-hook.py\"",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"/ABSOLUTE/PATH/FlyBug/integrations/claude-hook.py\"",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

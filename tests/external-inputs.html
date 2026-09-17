@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">
+  <title>FlyBug · 外部输入框验收</title>
+  <style>
+    :root { color-scheme: light; font: 16px/1.55 -apple-system, BlinkMacSystemFont, sans-serif; color: #24312c; background: #f2f4ef; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 850px; margin: 36px auto 80px; padding: 0 24px; }
+    h1 { margin: 4px 0 10px; font-size: 29px; letter-spacing: -.7px; }
+    .eyebrow { color: #536b58; font-size: 12px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+    .intro { color: #526057; margin-bottom: 25px; }
+    section { margin: 15px 0; border: 1px solid #d4ddd3; border-radius: 12px; padding: 20px; background: #fff; }
+    h2, label.title { display: block; margin: 0 0 5px; font-size: 17px; font-weight: 650; }
+    p { margin: 6px 0 12px; }
+    .hint { color: #637168; font-size: 13px; }
+    input, textarea { display: block; width: 100%; border: 1px solid #b8c8ba; border-radius: 6px; padding: 12px; background: #fdfefd; color: #172820; font: 18px/1.6 -apple-system, BlinkMacSystemFont, sans-serif; }
+    textarea { resize: vertical; }
+    :is(input, textarea):focus { outline: 3px solid #d0e9d7; border-color: #4c815b; }
+    code { background: #edf3ed; border-radius: 3px; padding: 1px 4px; }
+    .negative { background: #fafbf9; }
+    .readonly { border-left: 3px solid #c5cec1; padding-left: 12px; font-size: 18px; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">External browser test</div>
+  <h1>在真正的浏览器输入框里验收</h1>
+  <p class="intro">开启 FlyBug 的拼写检查后，逐个点进下列输入框，用键盘输入或粘贴示例文字，再停笔约 1 秒。苍蝇应飞向当前输入框里的拼写错误。此页仅包含普通 HTML 控件，没有自带检查器、诊断接入、JavaScript 或苍蝇动画。</p>
+
+  <section>
+    <label class="title" for="plain-input">1. 普通单行输入框</label>
+    <p id="plain-hint" class="hint">全选后重新输入或粘贴这句示例。预期：<code>sentnce</code> 出现拼写提示；改成 <code>sentence</code> 后清除。</p>
+    <input id="plain-input" aria-describedby="plain-hint" type="text" value="This is a sentnce." autocomplete="off" spellcheck="false">
+  </section>
+
+  <section>
+    <label class="title" for="plain-textarea">2. 普通多行输入框</label>
+    <p id="textarea-hint" class="hint">输入或粘贴下面的两行示例。预期：停笔约 1 秒后发现 <code>sentnce</code>；改成 <code>sentence</code> 后清除。</p>
+    <textarea id="plain-textarea" aria-describedby="textarea-hint" rows="3" spellcheck="false">This is a sentnce.
+The rest of this paragraph is correct.</textarea>
+  </section>
+
+  <section>
+    <label class="title" for="last-word">3. 光标停在最后一个词后</label>
+    <p id="last-hint" class="hint">重新输入这句示例，末尾不加空格。预期：停笔约 1 秒后仍能发现 <code>sentnce</code>，无需再按键。</p>
+    <input id="last-word" aria-describedby="last-hint" type="text" value="This is a sentnce" autocomplete="off" spellcheck="false">
+  </section>
+
+  <section class="negative">
+    <label class="title" for="correct-input">4. 正确文本对照</label>
+    <p id="correct-hint" class="hint">输入或粘贴正确的示例句子。预期：检查完成后，不应继续追着其他输入框里的错误。</p>
+    <textarea id="correct-input" aria-describedby="correct-hint" rows="2" spellcheck="false">This is a sentence.
+I bought an apple today.</textarea>
+  </section>
+
+  <section class="negative">
+    <label class="title" for="password-input">5. 密码框排除检查</label>
+    <p id="password-hint" class="hint">在此输入任意测试占位文字。预期：不读取、不检查密码框，苍蝇恢复自由飞行。</p>
+    <input id="password-input" aria-describedby="password-hint" type="password" value="sentnce-test-only" autocomplete="off" spellcheck="false">
+  </section>
+
+  <section>
+    <label class="title" for="long-input">6. 长文本与输入框内滚动</label>
+    <p id="long-hint" class="hint">开头和最后一行各有一个 <code>sentnce</code>。先在可见行输入一个空格触发检查，再滚动输入框；苍蝇应只追踪可见错误，不能停在已经滚走的文字位置。</p>
+    <textarea id="long-input" aria-describedby="long-hint" rows="5" spellcheck="false">The first sentnce is visible at the beginning.
+Line two contains a correct sentence.
+Line three contains a correct sentence.
+Line four contains a correct sentence.
+Line five contains a correct sentence.
+Line six contains a correct sentence.
+Line seven contains a correct sentence.
+Line eight contains a correct sentence.
+Line nine contains a correct sentence.
+Line ten contains a correct sentence.
+Line eleven contains a correct sentence.
+Line twelve contains a correct sentence.
+Line thirteen contains a correct sentence.
+Line fourteen contains a correct sentence.
+Line fifteen contains a correct sentence.
+Line sixteen contains a correct sentence.
+Line seventeen contains a correct sentence.
+Line eighteen contains a correct sentence.
+Line nineteen contains a correct sentence.
+Line twenty contains a correct sentence.
+Line twenty-one contains a correct sentence.
+Line twenty-two contains a correct sentence.
+Line twenty-three contains a correct sentence.
+Line twenty-four contains a correct sentence.
+The final sentnce is visible at the end.</textarea>
+  </section>
+
+  <section class="negative">
+    <h2>7. 非编辑文字对照</h2>
+    <p class="hint">这段文字不能编辑。仅查看或选择这段文字，不应触发输入检查。</p>
+    <p class="readonly">This is a sentnce.</p>
+  </section>
+</main>
+</body>
+</html>

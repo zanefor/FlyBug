@@ -1,0 +1,29 @@
+{
+  "name": "flybug-companion",
+  "displayName": "FlyBug Companion · 桌面苍蝇",
+  "description": "把当前可见代码的真实诊断发送给本机 FlyBug，让苍蝇飞到出错行。",
+  "version": "0.1.0",
+  "publisher": "flybug-local",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "extensionKind": ["ui"],
+  "capabilities": { "untrustedWorkspaces": { "supported": true }, "virtualWorkspaces": true },
+  "contributes": {
+    "commands": [
+      { "command": "flybug.reconnect", "title": "FlyBug: Reconnect · 重新连接" },
+      { "command": "flybug.reportLogicIssue", "title": "FlyBug: Report Selection as Logic Issue · 标记逻辑问题" },
+      { "command": "flybug.clearLogicIssues", "title": "FlyBug: Clear Manual Logic Issues · 清除手动标记" }
+    ],
+    "configuration": {
+      "title": "FlyBug",
+      "properties": {
+        "flybug.enabled": { "type": "boolean", "default": true, "description": "向本机 FlyBug 发送当前窗口可见的错误与警告。" },
+        "flybug.includeWarnings": { "type": "boolean", "default": true, "description": "除错误外，也报告警告。" },
+        "flybug.bridgeFile": { "type": "string", "default": "", "description": "可选：自定义 bridge.json 的绝对路径，留空使用默认本机路径。" }
+      }
+    }
+  },
+  "license": "MIT"
+}

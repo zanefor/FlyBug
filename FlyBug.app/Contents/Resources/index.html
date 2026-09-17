@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>FlyBug · 捕虫器</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="preview-banner" class="preview-banner" hidden>浏览器预览 <span>桌面苍蝇需通过 FlyBug.app 启动</span></div>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span><div><h1>FlyBug<span>捕虫器</span></h1><p>A LITTLE FLY. A SHARPER EYE.</p></div></div>
+      <div class="edition">DESKTOP COMPANION<span>FIELD NOTES / 001</span></div>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="specimen" id="specimen">
+        <span class="specimen-label">MUSCA DOMESTICA</span>
+        <span class="specimen-number">FIG. 01</span>
+        <svg class="flight-trail" viewBox="0 0 320 230" fill="none" aria-hidden="true"><path d="M8 150C55 184 118 214 140 180S89 108 65 141 130 191 170 142 237 91 302 117" stroke="currentColor" stroke-dasharray="2 5"/></svg>
+        <div class="specimen-ring ring-one"></div><div class="specimen-ring ring-two"></div>
+        <svg class="fly" viewBox="0 0 200 210" aria-label="家蝇标本插画" role="img">
+          <defs>
+            <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f7ed" stop-opacity=".92"/><stop offset=".45" stop-color="#c5d9d8" stop-opacity=".43"/><stop offset="1" stop-color="#efece0" stop-opacity=".77"/></linearGradient>
+            <radialGradient id="body" cx=".33" cy=".22" r=".8"><stop stop-color="#576356"/><stop offset=".45" stop-color="#333c32"/><stop offset="1" stop-color="#11180f"/></radialGradient>
+            <linearGradient id="thorax" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#666e59"/><stop offset=".45" stop-color="#242c22"/><stop offset=".7" stop-color="#424d3a"/><stop offset="1" stop-color="#12170f"/></linearGradient>
+            <radialGradient id="eye"><stop stop-color="#9c5443"/><stop offset=".65" stop-color="#632d24"/><stop offset="1" stop-color="#271b14"/></radialGradient>
+            <filter id="shadow" x="-100%" y="-60%" width="300%" height="240%"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <ellipse cx="103" cy="131" rx="25" ry="53" fill="#070c08" opacity=".28" filter="url(#shadow)"/>
+          <g class="fly-legs" fill="none" stroke="#252b21" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M88 81 69 65 57 35 46 30M111 81 132 65 143 35 153 29M84 97 62 91 44 113 25 111M117 97 139 90 158 110 177 107M88 114 62 140 58 172 46 184M112 114 138 140 143 171 155 183"/>
+            <g stroke-width=".8"><path d="m57 39-5 3m8 4-5 4m7 3-5 3m81-13 5 3m-8 4 5 3M45 113l1 6m6-16 3 5m103 2-2 7m-7-17-3 5M59 154l-5-2m5 13-4-1m88-12 5-2m-5 12 5-2"/></g>
+          </g>
+          <path d="M85 103C80 119 79 143 87 157Q100 174 113 157C122 141 118 119 114 104Z" fill="url(#body)" stroke="#1f271a"/>
+          <g fill="none" stroke="#819071" stroke-width="1" opacity=".46"><path d="M82 122Q99 132 118 122M83 133Q100 143 117 133M87 145Q100 154 113 145"/><path d="M98 115v46" opacity=".5"/></g>
+          <g class="wing wing-left" fill="url(#wing)" stroke="#8d9c89" stroke-width=".8">
+            <path d="M92 86C68 86 37 99 21 123S14 162 30 159C53 155 78 126 93 101Z"/>
+            <g fill="none" opacity=".65" stroke-width=".7"><path d="M89 92 28 151M87 94 50 111 20 139M71 107l-7 22-33 18M62 117l-23 8-14 19M51 133l-6-10M77 98l-3 12M38 144l-5-13"/></g>
+          </g>
+          <g class="wing wing-right" fill="url(#wing)" stroke="#8d9c89" stroke-width=".8">
+            <path d="M107 86C131 86 162 99 178 123S185 162 169 159C146 155 121 126 106 101Z"/>
+            <g fill="none" opacity=".65" stroke-width=".7"><path d="M110 92 171 151M112 94 149 111 179 139M128 107l7 22 33 18M137 117l23 8 14 19M148 133l6-10M122 98l3 12M161 144l5-13"/></g>
+          </g>
+          <path d="M83 82C82 69 89 65 100 65S118 71 117 85L114 110Q101 119 86 109Z" fill="url(#thorax)" stroke="#161e11"/>
+          <g fill="none" stroke="#8e967b" stroke-width="1.4" opacity=".56"><path d="M92 74 90 101M99 73l-1 31M105 74l2 29M110 77l3 21"/></g>
+          <g stroke="#1d2319" stroke-width=".7"><path d="m87 75-7-5m5 13-7-1m9 10-9 4m10 3-7 5m34-29 8-5m-6 12 8-2m-8 11 8 4m-9 4 7 6m-30 47-5 5m21-6 5 5"/></g>
+          <path d="M87 57Q99 48 112 58L113 71Q101 79 87 70Z" fill="#303929"/>
+          <ellipse cx="87" cy="63" rx="8" ry="11" fill="url(#eye)" transform="rotate(-18 87 63)"/>
+          <ellipse cx="112" cy="63" rx="8" ry="11" fill="url(#eye)" transform="rotate(18 112 63)"/>
+          <g fill="none" stroke="#252d1c" stroke-width="1.4" stroke-linecap="round"><path d="m97 56-3-9-5-3m14 12 3-9 5-3M100 55v-8"/></g>
+          <path d="M97 64h6l-2 12h-3Z" fill="#151c12"/>
+        </svg>
+        <div class="specimen-caption"><span id="flight-caption">静候放飞</span><span>标本放大图 · 桌面默认 28 px</span></div>
+      </div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="status-dot" id="running-dot"></span><span id="running-status">正在连接本地应用</span></div>
+        <h2 id="hero-heading">让 Bug，<br>有迹可循。</h2>
+        <p class="hero-description">一只住在桌面的苍蝇。<br>发现代码报错或文字错误，就飞过去。</p>
+        <div class="hero-actions"><button class="button button-primary" id="toggle-running">放出苍蝇 <span aria-hidden="true">↗</span></button><button class="button button-secondary" id="demo" title="生成一个示例报错，演示苍蝇定位">试飞一下</button></div>
+      </div>
+    </section>
+
+    <section class="settings-grid" aria-label="苍蝇设置">
+      <div class="settings-section">
+        <h3><span class="section-index">01</span>飞行习性<span class="section-note">FLIGHT</span></h3>
+        <div class="range-row"><label for="size">体型</label><input id="size" type="range" min="20" max="42" step="1" value="28"><output id="size-value" for="size">28 px</output></div>
+        <div class="range-row"><label for="speed">飞行速度</label><input id="speed" type="range" min="0.4" max="2" step="0.1" value="1"><output id="speed-value" for="speed">1.0 ×</output></div>
+        <div class="range-row"><label for="opacity">不透明度</label><input id="opacity" type="range" min="0.35" max="1" step="0.05" value="0.9"><output id="opacity-value" for="opacity">90 %</output></div>
+        <label class="toggle-row" for="idleFlight"><span>空闲时随意飞舞</span><input id="idleFlight" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+      </div>
+      <div class="settings-section observation">
+        <h3><span class="section-index">02</span>观察范围<span class="section-note">DETECTION</span></h3>
+        <label class="toggle-row" for="screenMonitoring"><span>观察屏幕报错<small>识别当前屏幕上可见的错误提示</small></span><input id="screenMonitoring" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+        <label class="toggle-row warnings-row" for="includeWarnings"><span>也关注警告</span><input id="includeWarnings" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+        <div class="permission-row"><span class="permission-indicator" id="permission-indicator"></span><span id="permission-summary">读取权限状态中</span><button class="text-button" id="screen-permission">开启权限 ↗</button></div>
+        <p class="local-note"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 13 4v4c0 3-5 6-5 6s-5-3-5-6V4Z"/><path d="m5.5 7.5 1.7 1.7 3.4-3.4"/></svg>屏幕与文字检查均在本地完成</p>
+      </div>
+    </section>
+
+    <section class="writing-settings" aria-label="键盘输入检查">
+        <div class="writing-summary">
+          <label class="toggle-row" for="textChecking"><span>键盘输入检查<small>输入时立即响应，短暂停笔后检查拼写</small></span><input id="textChecking" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+          <p id="text-status" class="text-status" role="status" aria-live="polite">等待文字检查连接</p>
+        </div>
+        <div class="writing-controls">
+          <div class="writing-options"><label class="check-row" for="checkSpelling"><input id="checkSpelling" type="checkbox" checked>英文拼写检查</label><label class="language-row" for="textLanguage">语言<select id="textLanguage"><option value="auto">自动</option><option value="en_US">English</option><option value="zh_Hans">中文</option></select></label></div>
+          <div class="writing-actions"><button class="text-button" id="writing-demo">打开试写窗口 ↗</button><button class="text-button" id="text-permission">辅助功能权限 ↗</button></div>
+          <p id="spelling-status" class="text-status needs-attention" hidden>拼写检查已关闭，单词拼错不会触发。</p>
+        </div>
+        <p class="writing-note">全局键盘事件触发，停笔约 1 秒后检查；最后一个词也会检查，无需补空格。只读取当前输入框，输入法组词时等待确认。</p>
+    </section>
+
+    <section class="activity" aria-labelledby="activity-heading">
+      <div class="activity-heading"><h3 id="activity-heading"><span class="section-index">03</span>观察记录</h3><button class="text-button" id="clear">清空记录</button></div>
+      <div class="diagnostic" id="diagnostic"><span class="diagnostic-icon" id="diagnostic-icon" aria-hidden="true">·</span><div class="diagnostic-copy"><p id="diagnostic-message">还没有发现问题</p><span id="diagnostic-location">输入文字进行检查，或连接编辑器诊断。</span></div><span class="diagnostic-tag" id="diagnostic-tag">WAITING</span></div>
+      <p id="native-status" class="native-status" role="status" aria-live="polite">等待应用连接</p>
+      <details class="activity-history" id="activity-history"><summary>最近记录 <span id="event-count">0</span></summary><ol id="event-list"></ol></details>
+    </section>
+
+    <details class="setup" id="setup">
+      <summary><span><span class="connection-dot" id="bridge-dot"></span>编辑器接入与更多设置</span><span class="setup-arrow" aria-hidden="true">↗</span></summary>
+      <div class="setup-content">
+        <p>支持本机 Codex、Claude Code 和终端命令接入，安装说明见随附 README。屏幕观察会寻找可见报错；工具发送诊断后，苍蝇可飞向已确认的位置。逻辑问题需要检查工具主动报告。</p>
+        <div class="bridge-info"><span id="bridge-status">本地接口等待启动</span><code id="bridge-address">127.0.0.1:—</code></div>
+        <div class="setup-buttons"><button class="button button-small" id="copy-command">复制接入示例</button><button class="button button-small" id="open-data">打开配置目录</button><button class="button button-small" id="accessibility-permission">辅助功能权限 ↗</button></div>
+        <label class="interval-row" for="scanInterval">屏幕观察间隔<select id="scanInterval"><option value="2">每 2 秒</option><option value="3">每 3 秒</option><option value="4">每 4 秒</option><option value="5">每 5 秒</option><option value="6">每 6 秒</option><option value="8">每 8 秒</option><option value="10">每 10 秒</option></select></label>
+        <p class="setup-tip">可随时通过菜单栏的 FlyBug 菜单暂停飞行或退出。</p>
+      </div>
+    </details>
+    <footer><span><span class="footer-dot"></span>小小的观察员，大大的专注。</span><button class="text-button" id="quit">退出 FlyBug</button><span id="version">v1.2.0</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

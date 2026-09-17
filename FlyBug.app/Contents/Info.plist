@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleName</key><string>FlyBug</string>
+  <key>CFBundleDisplayName</key><string>FlyBug · 捕虫器</string>
+  <key>CFBundleIdentifier</key><string>local.flybug.desktop</string>
+  <key>CFBundleExecutable</key><string>FlyBug</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.2.0</string>
+  <key>CFBundleVersion</key><string>4</string>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>LSUIElement</key><true/>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSScreenCaptureUsageDescription</key><string>在本机识别当前代码窗口的可见报错，让苍蝇飞到对应位置。图像只在内存处理，不上传、不保存。</string>
+  <key>NSAppleEventsUsageDescription</key><string>FlyBug 通过辅助功能定位当前编辑器中可见的报错代码。</string>
+</dict></plist>
